@@ -829,10 +829,9 @@ static void send_consumer(uint16_t data) {
  * FIXME: Needs doc
  */
 int8_t sendchar(uint8_t c) {
-    // Do not wait if the previous write has timed_out.
+    // Not wait once timeouted.
     // Because sendchar() is called so many times, waiting each call causes big lag.
-    // The `timed_out` state is an approximation of the ideal `is_listener_disconnected?` state.
-    static bool timed_out = false;
+    static bool timeouted = false;
 
     // prevents Console_Task() from running during sendchar() runs.
     // or char will be lost. These two function is mutually exclusive.
@@ -846,11 +845,11 @@ int8_t sendchar(uint8_t c) {
         goto ERROR_EXIT;
     }
 
-    if (timed_out && !Endpoint_IsReadWriteAllowed()) {
+    if (timeouted && !Endpoint_IsReadWriteAllowed()) {
         goto ERROR_EXIT;
     }
 
-    timed_out = false;
+    timeouted = false;
 
     uint8_t timeout = SEND_TIMEOUT;
     while (!Endpoint_IsReadWriteAllowed()) {
@@ -861,7 +860,7 @@ int8_t sendchar(uint8_t c) {
             goto ERROR_EXIT;
         }
         if (!(timeout--)) {
-            timed_out = true;
+            timeouted = true;
             goto ERROR_EXIT;
         }
         _delay_ms(1);
@@ -1107,7 +1106,8 @@ int main(void) {
 #endif
 
         // Run housekeeping
-        housekeeping_task();
+        housekeeping_task_kb();
+        housekeeping_task_user();
     }
 }
 

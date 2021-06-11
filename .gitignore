@@ -5,7 +5,6 @@
 *.eep
 *.elf
 *.hex
-*.uf2
 *.qmk
 !util/bootloader.hex
 !quantum/tools/eeprom_reset.hex
@@ -51,7 +50,6 @@ doxygen/
 .browse.VC.db*
 *.stackdump
 # Let these ones be user specific, since we have so many different configurations
-*.code-workspace
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/tasks.json
@@ -73,7 +71,6 @@ id_rsa_*
 
 # python things
 __pycache__
-.python-version
 
 # prerequisites for updating ChibiOS
 /util/fmpp*
