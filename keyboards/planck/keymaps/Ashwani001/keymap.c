@@ -105,21 +105,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Adjust (Lower + Raise)
  *                              v-----RGB CONTROL---v
  * ,-----------------------------------------------------------------------------------.
- * |Reset |  MWU |  M1  |MouseU|  M2  |      |      |      |      |  Up  |      |  Ins |
+ * |Reset |  MWU |  M1  |MouseU|  M2  |      |      | Bht- | Bht+ |  Up  |      |  Ins |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Debug |  MWD |MouseL|MouseD|MouseR|   +  |   =  |      | Left | Down | Right|      |
+ * |Debug |  MWD |MouseL|MouseD|MouseR|   +  |   =  |      | Left | Down | Right| Vol+ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift| RGB  |BRGTH+|BRGTH-|   <  |   [  |   ]  |  >   |Pg Up |Pg Dn |      |      |
+ * | Shift| RGB  |BRGTH+|BRGTH-|   <  |   [  |   ]  |  >   |Pg Up |Pg Dn |      | Vol- |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |Mus on|Musoff|Voice+|Voice-|             |      |      |      |      |      |
+ * |Mus on|Musoff|Voice+|Voice- |     |             |      |      |      |      | Mute |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_grid(
-    RESET, KC_MS_WH_UP,   KC_BTN1,   KC_MS_U, KC_BTN2,_______,_______, _______,   _______,  KC_UP, _______,  KC_INS,
-    DEBUG, KC_MS_WH_DOWN,  KC_MS_L,  KC_MS_D,   KC_MS_R,  KC_PLUS, KC_EQL, _______,  KC_LEFT, KC_DOWN, KC_RGHT, _______,
-    KC_LSFT, RGB_TOG, RGB_VAI, RGB_VAD, KC_LABK, KC_LBRC, KC_RBRC, KC_RABK, KC_PGUP, KC_PGDN, _______, _______,
-    _______, MU_ON, MU_OFF, MUV_IN, MUV_DE, _______, _______, _______, _______,  _______, _______, _______
-),
+    RESET, KC_MS_WH_UP,   KC_BTN1,   KC_MS_U, KC_BTN2,_______,_______, KC_BRID,   KC_BRIU,  KC_UP, _______,  KC_INS,
+    DEBUG, KC_MS_WH_DOWN,  KC_MS_L,  KC_MS_D,   KC_MS_R,  KC_PLUS, KC_EQL, _______,  KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLU,
+    KC_LSFT, RGB_TOG, RGB_VAI, RGB_VAD, KC_LABK, KC_LBRC, KC_RBRC, KC_RABK, KC_PGUP, KC_PGDN, _______, KC_VOLD,
+    MU_ON, MU_OFF, MUV_IN, MUV_DE, _______, _______, _______, _______, _______,  _______, _______, KC_MUTE
+)
 
 };
 
